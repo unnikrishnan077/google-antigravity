@@ -46,22 +46,7 @@ const AgentManager = () => {
       {/* Chat Area */}
       <Box sx={{ flex: 1, overflowY: 'auto', p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
         {messages.map((msg, index) => (
-          <Box key={index} sx={{
-            alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
-            maxWidth: '85%'
-          }}>
-            <Paper sx={{
-              p: 1.5,
-              borderRadius: 2,
-              bgcolor: msg.sender === 'user' ? 'primary.dark' : 'background.paper',
-              color: 'text.primary'
-            }}>
-              <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>{msg.text}</Typography>
-            </Paper>
-            <Typography variant="caption" sx={{ color: 'text.secondary', ml: 1, fontSize: '0.7rem' }}>
-              {msg.sender === 'agent' ? 'Gemini 3 Pro' : 'You'}
-            </Typography>
-          </Box>
+          <MessageItem key={index} msg={msg} />
         ))}
         {isTyping && (
            <Box sx={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -95,5 +80,26 @@ const AgentManager = () => {
     </Box>
   );
 };
+
+// Memoized component to prevent unnecessary re-renders of existing messages
+// when the parent state updates (e.g., input changes)
+const MessageItem = React.memo(({ msg }) => (
+  <Box sx={{
+    alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+    maxWidth: '85%'
+  }}>
+    <Paper sx={{
+      p: 1.5,
+      borderRadius: 2,
+      bgcolor: msg.sender === 'user' ? 'primary.dark' : 'background.paper',
+      color: 'text.primary'
+    }}>
+      <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>{msg.text}</Typography>
+    </Paper>
+    <Typography variant="caption" sx={{ color: 'text.secondary', ml: 1, fontSize: '0.7rem' }}>
+      {msg.sender === 'agent' ? 'Gemini 3 Pro' : 'You'}
+    </Typography>
+  </Box>
+));
 
 export default AgentManager;
