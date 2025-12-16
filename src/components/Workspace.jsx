@@ -21,9 +21,18 @@ const Workspace = () => {
           <Tab icon={<Preview fontSize="small"/>} iconPosition="start" label="Preview" sx={{ minHeight: 48 }} />
         </Tabs>
       </Box>
-      <Box sx={{ flex: 1, overflow: 'hidden' }}>
-        {tabIndex === 0 && <EditorPanel code={generatedCode} />}
-        {tabIndex === 1 && <PreviewPanel code={generatedCode} />}
+      <Box sx={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
+        {/*
+            Optimization: Use display toggling instead of conditional rendering.
+            This prevents expensive unmounting/remounting of EditorPanel (syntax highlighting)
+            and PreviewPanel (iframe) when switching tabs, making the UI much more responsive.
+        */}
+        <Box sx={{ height: '100%', display: tabIndex === 0 ? 'block' : 'none' }}>
+          <EditorPanel code={generatedCode} />
+        </Box>
+        <Box sx={{ height: '100%', display: tabIndex === 1 ? 'block' : 'none' }}>
+          <PreviewPanel code={generatedCode} />
+        </Box>
       </Box>
     </Box>
   );
