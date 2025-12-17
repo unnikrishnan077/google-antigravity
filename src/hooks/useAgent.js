@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { create } from 'zustand';
 
 // Simple store for global state management if needed across components

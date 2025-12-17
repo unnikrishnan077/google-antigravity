@@ -21,9 +21,13 @@ const Workspace = () => {
           <Tab icon={<Preview fontSize="small"/>} iconPosition="start" label="Preview" sx={{ minHeight: 48 }} />
         </Tabs>
       </Box>
-      <Box sx={{ flex: 1, overflow: 'hidden' }}>
-        {tabIndex === 0 && <EditorPanel code={generatedCode} />}
-        {tabIndex === 1 && <PreviewPanel code={generatedCode} />}
+      <Box sx={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
+        <Box sx={{ display: tabIndex === 0 ? 'block' : 'none', height: '100%' }}>
+          <EditorPanel code={generatedCode} />
+        </Box>
+        <Box sx={{ display: tabIndex === 1 ? 'block' : 'none', height: '100%' }}>
+          <PreviewPanel code={generatedCode} />
+        </Box>
       </Box>
     </Box>
   );
