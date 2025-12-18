@@ -1,0 +1,52 @@
+.editor-container {
+    flex: 1;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.editor-wrapper {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.code-textarea {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: #fff;
+    padding: 1.5rem;
+    resize: none;
+    font-family: 'Fira Code', monospace;
+    /* Fallback to monospace if not available */
+    font-size: 14px;
+    line-height: 1.6;
+    z-index: 10;
+    border: none;
+    position: relative;
+}
+
+.code-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.editor-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle at top right, rgba(189, 0, 255, 0.1), transparent 70%);
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+}
+
+.editor-wrapper:hover .editor-glow {
+    opacity: 0.8;
+}

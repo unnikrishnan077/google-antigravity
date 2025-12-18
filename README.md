@@ -1,16 +1,43 @@
-# React + Vite
+# Vibe Coder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Vibe Coder** is a high-aesthetic, local-first code editor powered by Google's Gemini AI. Built with Electron, React, and Vite, it allows you to code in a "flow state" with intelligent AI assistance always at your fingertips.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Gemini AI Integration**: Chat with the latest Gemini models directly in your editor.
+- **Vibe Checks**: Get instant feedback and code generation.
+- **Apply Code**: One-click apply generated code to your editor.
+- **Glassmorphism UI**: A stunning, modern interface designed for focus.
+- **Local & Secure**: Your API key stays on your machine.
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-## Expanding the ESLint configuration
+2.  **Run Locally (Dev Mode)**
+    Start the Vite dev server and Electron app:
+    ```bash
+    npm run electron
+    ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3.  **Build for Production**
+    Generate an executable for your OS:
+    ```bash
+    npm run dist
+    ```
+
+## Configuration
+
+**API Key**: You need a Google Gemini API Key.
+- Get one for free at [Google AI Studio](https://aistudio.google.com/).
+- Enter it in the app's settings (gear icon). It is saved locally to your machine.
+
+## Tech Stack
+
+- **Electron**
+- **Vite**
+- **React**
+- **Google Generative AI SDK**
