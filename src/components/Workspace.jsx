@@ -22,8 +22,17 @@ const Workspace = () => {
         </Tabs>
       </Box>
       <Box sx={{ flex: 1, overflow: 'hidden' }}>
-        {tabIndex === 0 && <EditorPanel code={generatedCode} />}
-        {tabIndex === 1 && <PreviewPanel code={generatedCode} />}
+        {/*
+          ⚡ Bolt Optimization: Use CSS-based toggling (display: none) instead of conditional rendering.
+          This prevents expensive unmounting/remounting of the Editor (syntax highlighting)
+          and Preview (iframe reload) components when switching tabs.
+        */}
+        <Box sx={{ height: '100%', display: tabIndex === 0 ? 'block' : 'none' }}>
+          <EditorPanel code={generatedCode} />
+        </Box>
+        <Box sx={{ height: '100%', display: tabIndex === 1 ? 'block' : 'none' }}>
+          <PreviewPanel code={generatedCode} />
+        </Box>
       </Box>
     </Box>
   );
