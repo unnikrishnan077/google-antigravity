@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Tabs, Tab } from '@mui/material';
-import { Code, Preview } from '@mui/icons-material';
+import { Code, Preview, Work } from '@mui/icons-material';
 import EditorPanel from './EditorPanel';
 import PreviewPanel from './PreviewPanel';
+import UAECareerCompass from './UAECareerCompass';
 import useAgent from '../hooks/useAgent';
 
 const Workspace = () => {
@@ -19,11 +20,13 @@ const Workspace = () => {
         <Tabs value={tabIndex} onChange={handleTabChange} aria-label="workspace tabs" textColor="primary" indicatorColor="primary">
           <Tab icon={<Code fontSize="small"/>} iconPosition="start" label="Code" sx={{ minHeight: 48 }} />
           <Tab icon={<Preview fontSize="small"/>} iconPosition="start" label="Preview" sx={{ minHeight: 48 }} />
+          <Tab icon={<Work fontSize="small"/>} iconPosition="start" label="UAE Career" sx={{ minHeight: 48 }} />
         </Tabs>
       </Box>
       <Box sx={{ flex: 1, overflow: 'hidden' }}>
         {tabIndex === 0 && <EditorPanel code={generatedCode} />}
         {tabIndex === 1 && <PreviewPanel code={generatedCode} />}
+        {tabIndex === 2 && <UAECareerCompass />}
       </Box>
     </Box>
   );
